@@ -1,0 +1,46 @@
+// CUSTOM STYLES
+// --------------------------------------------------
+@import "./app/bower_components/bootstrap-sass/lib/bootstrap";
+@import "./app/styles/fonts";
+
+html,body, h3,h1{
+  font-family: 'nutella';
+}
+.container.main{
+    margin-top: 40px;
+}
+
+.navbar .intro{
+  color: white;
+  padding-top: 16px;
+  display: block;
+  text-align: right;
+}
+
+.blocks.none  {
+  display : none;
+
+}
+
+h1,h3{
+  color: red;
+  &:first-letter{
+    color: black;
+  }
+}
+
+.navbar-red {
+  background-color: #CE3E3E;
+  a{
+    color: white;
+    &:hover{
+      color: #DA8181;
+    }
+  }
+}
+
+pre{
+  color: #FFFFFF;
+  background-color: #000000;
+  border: 1px solid #3F3E3E;
+}

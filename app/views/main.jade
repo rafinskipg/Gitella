@@ -1,0 +1,7 @@
+div(ng-controller="mainCtrl")
+  div.blocks(ng-class="{'none': !isLoaded}")
+    div(data-scrollreveal="{{ cheat.scrollReveal }}"  ng-repeat="cheat in gitCheats" on-finish-render )
+      h3 {{ cheat.title }}
+      pre
+        code
+          p(ng-repeat="code in cheat.commands") {{ code }}

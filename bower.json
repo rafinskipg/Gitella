@@ -1,0 +1,30 @@
+{
+  "name": "Calculator",
+  "version": "0.0.1",
+  "authors": [
+    "Rafinskipg"
+  ],
+  "description": "What the fuck",
+  "dependencies": {
+    "angular": "1.2.8",
+    "angular-route": "1.2.8"
+  },
+  "keywords": [
+    "gulp",
+    "angular",
+    "browserify"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "app/bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "bootstrap-sass": "~3.0.2",
+    "scrollReveal.js": "~0.0.2"
+  }
+}
