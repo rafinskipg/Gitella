@@ -27,7 +27,7 @@ gulp.task('lint', function() {
 });
 
 gulp.task('clean', function() {
-   return gulp.src('./build/', {read: false})
+   return gulp.src(['./build/', './dist/'], {read: false})
         .pipe(clean());
 });
 
@@ -79,8 +79,8 @@ gulp.task('templates', function() {
     .pipe(gulp.dest('./build/views/'))
 });
 
-gulp.task('sassMyShit', function(){
-  return  gulp.src('app/styles/*.scss')
+gulp.task('sass', function(){
+  return  gulp.src('app/styles/custom.scss')
         .pipe(sass({                      // Dictionary of render options
                 includePaths: [
                     './app/bower_components/bootstrap-sass/lib/',
@@ -92,15 +92,15 @@ gulp.task('sassMyShit', function(){
 });
 
 gulp.task('minify-css', function() {
-  gulp.src('./app/styles/**/**.css')
+  gulp.src('./build/styles/**/**.css')
     .pipe(minifyCSS(opts))
-    .pipe(gulp.dest('./dist/'))
+    .pipe(gulp.dest('./dist/styles'))
 });
 
 gulp.task('minify-html', function() {
-  gulp.src('./app/views/*.html')
+  gulp.src('./build/views/*.html')
     .pipe(minifyHTML(opts))
-    .pipe(gulp.dest('./dist'))
+    .pipe(gulp.dest('./dist/views'))
 });
 
 gulp.task('imagemin', function () {
@@ -123,7 +123,7 @@ gulp.task('watch', function() {
     return gulp.src(['./app/scripts/**/**.**','./app/styles/**.**','./app/views/**.**'])
         .pipe(watch({ emit: 'all' }, function(files) {
             files
-                .pipe(gulp.run('templates','sassMyShit', 'lint', 'browserify'));
+                .pipe(gulp.run('templates','sass', 'lint', 'browserify'));
         }));
 });
 
@@ -144,20 +144,22 @@ gulp.task("server", function(){
         .pipe(open("", options));
 });
 
-gulp.task("copy_dist", function(){
+gulp.task("copy-dist", function(){
+    gulp.src('./app/styles/fonts/**.**')
+        .pipe(gulp.dest('./dist/styles/fonts/'));
     return gulp.src([
-                './build/styles/**.css',
                 './build/**/**.html',
+                './app/index.html',
             ])
-            .pipe(gulp.dest('./dist/*'));
+            .pipe(gulp.dest('./dist/'));
 
 });
 
 //Default task,. For minify use gulp-minify-
 gulp.task('default', function(){
-   runSequence('clean','templates', ['browserify', 'lint','sassMyShit' ],'server');
+   runSequence('clean','templates', ['browserify', 'lint','sass' ],'server');
 });
 
 gulp.task('build', function(){
-  runSequence('clean_dist', ['templates', 'lint','browserify' ], 'minify-js', 'copy_dist');
+  runSequence('clean', ['templates','browserify' ,'sass'], 'minify-js', 'minify-css', 'copy-dist');
 });
