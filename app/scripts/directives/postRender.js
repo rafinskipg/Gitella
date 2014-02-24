@@ -1,5 +1,5 @@
 angular.module('directives',  [])
-  .directive('onFinishRender', function ($timeout) {
+  .directive('onFinishRender', ['$timeout',function ($timeout) {
     return {
         restrict: 'AE',
         link: function (scope, element, attr) {
@@ -10,4 +10,4 @@ angular.module('directives',  [])
             }
         }
     }
-  });
+  }]);
