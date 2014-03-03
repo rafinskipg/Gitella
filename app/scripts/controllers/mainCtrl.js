@@ -24,6 +24,27 @@ var controllers = angular.module('controllers',  [])
           "git remote add superOrigin https://github.com/other-guy/other-guys-repo.git ", 
           "git pull superOrigin superOriginBranchName"
         ]
+      }, {
+        "title": "Create a remote branch from a local one",
+        "commands": [
+          "git push origin LOCAL_BRANCH:REMOTE_BRANCH"
+        ]
+      }, {
+        "title": "Delete a remote branch",
+        "commands": [
+          "git push origin :REMOTE_BRANCH"
+        ]
+      }, {
+        "title": "delete / force delete local branch",
+        "commands": [
+          "git branch -d LOCAL_BRANCH",
+          "git branch -D LOCAL_BRANCH"
+        ]
+      }, {
+        "title": "Make an interactive rebase to join, rewrite, reorder commits",
+        "commands": [
+          "git rebase -i BRANCH/COMMIT"
+        ]
       }
     ];
 
@@ -38,3 +59,4 @@ var controllers = angular.module('controllers',  [])
       $scope.isLoaded = true;
     });
 }]);
+
