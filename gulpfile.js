@@ -141,15 +141,7 @@ gulp.task('buildserver', function(){
 
     http.createServer(app).listen(process.env.PORT || 8888);
 });
-gulp.task('buildlocalserver', function(){
-    var options = {
-        url: "http://localhost:9292"
-    };
-    var app = connect()
-            .use(connect.static('dist'));
 
-    http.createServer(app).listen(9292);
-});
 
 gulp.task("copy-dist", function(){
     gulp.src('./app/styles/fonts/**.**')
