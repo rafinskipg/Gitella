@@ -28,7 +28,7 @@ gulp.task('browserify', function() {
           debug : true,
           shim: {
             'scrollReveal': {
-                path: 'app/scripts/vendor/scrollReveal.js',
+                path: 'app/bower_components/scrollReveal.js/dist/scrollReveal.js',
                 exports: 'scrollReveal'
             },
             'angular': {
