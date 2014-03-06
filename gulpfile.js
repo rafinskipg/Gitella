@@ -135,13 +135,11 @@ gulp.task("server", function(){
 });
 
 gulp.task('buildserver', function(){
-    var options = {
-        url: "http://gitella.herokuapp.com:80"
-    };
+
     var app = connect()
             .use(connect.static('dist'));
 
-    http.createServer(app).listen(80);
+    http.createServer(app).listen(process.env.PORT || 8888);
 });
 gulp.task('buildlocalserver', function(){
     var options = {
