@@ -1,44 +1,91 @@
 [
     {
-        "title": "History",
+        "title": "Initialize a repository",
         "commands": [
-            "git log"
+            "git init"
         ],
-        "level": "initiate",
-        "id": 0
+        "level": "rookie",
+        "id": "r0"
     },
     {
-        "title": "List of remote repositories",
+        "title": "Clone a remote repository",
         "commands": [
-            "git remote -v"
+            "git clone URL_REPOSITORY"
         ],
-        "level": "initiate",
-        "id": 1
+        "level": "rookie",
+        "id": "r1"
     },
     {
-        "title": "Pull changes from original repo to fork",
+        "title": "Show files modified",
         "commands": [
-            "git remote add superOrigin https://github.com/other-guy/other-guys-repo.git ",
-            "git pull superOrigin superOriginBranchName"
+            "git status"
         ],
-        "level": "warrior",
-        "id": 2
+        "level": "rookie",
+        "id": "r2"
+    },
+    {
+        "title": "Add all the files you changed",
+        "commands": [
+            "git add --all"
+        ],
+        "level": "rookie",
+        "id": "r3"
+    },
+    {
+        "title": "Commit changes with a message",
+        "commands": [
+            "git commit -m \"MESSAGE\" "
+        ],
+        "level": "rookie",
+        "id": "r4"
+    },
+    {
+        "title": "Pull changes from remote",
+        "commands": [
+            "git pull origin REMOTE_BRANCH"
+        ],
+        "level": "rookie",
+        "id": "r5"
+    },
+    {
+        "title": "Create a local branch",
+        "commands": [
+            "git checkout -b LOCAL_BRANCH"
+        ],
+        "level": "adept",
+        "id": "a0"
+    },
+    {
+        "title": "Show the local branches list",
+        "commands": [
+            "git branch"
+        ],
+        "level": "adept",
+        "id": "a1"
+    },
+    {
+        "title": "Switch between branches",
+        "commands": [
+            "git checkout LOCAL_BRANCH"
+        ],
+        "level": "adept",
+        "id": "a2"
+    },
+    {
+        "title": "Merge branches",
+        "commands": [
+            "git merge OTHER_BRANCH"
+        ],
+        "level": "adept",
+        "id": "a3"
     },
     {
         "title": "Create a remote branch from a local one",
         "commands": [
             "git push origin LOCAL_BRANCH:REMOTE_BRANCH"
         ],
-        "level": "initiate",
-        "id": 3
-    },
-    {
-        "title": "Delete a remote branch",
-        "commands": [
-            "git push origin :REMOTE_BRANCH"
-        ],
-        "level": "initiate",
-        "id": 4
+        "level": "adept",
+        "id": "a4"
     },
     {
         "title": "delete / force delete local branch",
@@ -46,8 +93,50 @@
             "git branch -d LOCAL_BRANCH",
             "git branch -D LOCAL_BRANCH"
         ],
+        "level": "adept",
+        "id": "a5"
+    },
+    {
+        "title": "Delete a remote branch",
+        "commands": [
+            "git push origin :REMOTE_BRANCH"
+        ],
+        "level": "adept",
+        "id": "a6"
+    },
+    {
+        "title": "History",
+        "commands": [
+            "git log"
+        ],
         "level": "warrior",
-        "id": 5
+        "id": "w0"
+    },
+    {
+        "title": "List of remote repositories",
+        "commands": [
+            "git remote -v"
+        ],
+        "level": "warrior",
+        "id": "w1"
+    },
+    {
+        "title": "Pull changes from original repo to fork",
+        "commands": [
+            "git remote add superOrigin https://github.com/other-guy/other-guys-repo.git ",
+            "git pull superOrigin REMOTE_BRANCH"
+        ],
+        "level": "warrior",
+        "id": "w2"
+    },
+    {
+        "title": "Stash your changes without commit / Recover the files from stash",
+        "commands": [
+            "git stash",
+            "git stash apply"
+        ],
+        "level": "warrior",
+        "id": "w3"
     },
     {
         "title": "Make an interactive rebase to join, rewrite, reorder commits",
@@ -55,6 +144,39 @@
             "git rebase -i BRANCH/COMMIT"
         ],
         "level": "veteran",
-        "id": 6
+        "id": "v0"
+    },
+    {
+        "title": "List all the files for a commit",
+        "commands": [
+            "git diff-tree --no-commit-id --name-only -r [SHA1]",
+            "git show --pretty=\"format:\" --name-only [SHA1]"
+        ],
+        "level": "veteran",
+        "id": "v1"
+    },
+    {
+        "title": "Show file from specific commit",
+        "commands": [
+            "git show -r [SHA1]:[filepath]"
+        ],
+        "level": "veteran",
+        "id": "v2"
+    },
+    {
+        "title": "Search for string in all commit history",
+        "commands": [
+            "git log -S \"[string]\" --source --all"
+        ],
+        "level": "veteran",
+        "id": "v3"
+    },
+    {
+        "title": "Undo changes of a file to a specified commit",
+        "commands": [
+            "git checkout [SHA1] -- [filename]"
+        ],
+        "level": "veteran",
+        "id": "v4"
     }
 ]

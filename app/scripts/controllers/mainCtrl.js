@@ -5,37 +5,60 @@ var controllers = angular.module('controllers',   [])
   '$scope', 'commandsSrv',
   function($scope, commandsSrv ) {
     $scope.isLoaded = false;
+
     $scope.filters = {
       level: ''
     };
+    $scope.images = [
+      {
+        url: '/images/badge_all_.png',
+        filter: ''
+      },
+      {
+        url: '/images/badge_rookie_.png',
+        filter: 'rookie'
+      },
+      {
+        url: '/images/badge_adept_.png',
+        filter: 'adept'
+      },
+      {
+        url: '/images/badge_warrior_.png',
+        filter: 'warrior'
+      },
+      {
+        url: '/images/badge_veteran_.png',
+        filter: 'veteran'
+      },
+      {
+        url: '/images/badge_latte_.png',
+        filter: 'latte'
+      }
+    ];
 
-    commandsSrv.getCommands().then(function(response){
-      $scope.gitCheats = response.data;
-
-      $scope.gitCheats = $scope.gitCheats.map(function(cheat){
+    commandsSrv.getCommands().then(function(res){
+      if(res.hasLocalStorage){
+        $scope.setFilter('latte');
+      }else{
+        $scope.setFilter('');
+      }
+      $scope.gitCheats = res.commands.map(function(cheat){
         cheat.scrollReveal = "enter bottom over 1s and move 100px";
         return cheat;
       });
-      var locals = commandsSrv.getLocals();
-      $scope.gitCheats.map(function(cheat){
-          if(locals.indexOf(cheat.id) != -1){
-            cheat.checked = true;
-          } else{
-            cheat.checked = false;
-          }
-      });
     });
 
-    $scope.isVisible = function(){
-      console.log('eee');return true;
-    }
+    $scope.setFilter = function(filter){
+      $scope.active = filter;
+      var level = filter === 'latte' ? '' : filter;
 
-    $scope.setFilter = function(level, checkedOnly){
       $scope.filters = {
         level : level
       };
-      if(checkedOnly){
+      
+      if(filter === 'latte'){
         $scope.filters.checked = true;
+
       }
     }
 

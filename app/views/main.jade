@@ -1,20 +1,12 @@
 div(ng-controller="mainCtrl")
   div.badges.row
-    div.col-xs-2.col
-      img(src="/images/badge_all.png", ng-click="setFilter('', false)")
-    div.col-xs-2.col
-      img(src="/images/badge_rookie.png", ng-click="setFilter('rookie', false)")
-    div.col-xs-2.col
-      img(src="/images/badge_initiate.png", ng-click="setFilter('initiate', false)")
-    div.col-xs-2.col
-      img(src="/images/badge_warrior.png", ng-click="setFilter('warrior', false)")
-    div.col-xs-2.col
-      img(src="/images/badge_veteran.png", ng-click="setFilter('veteran', false)")
-    div.col-xs-2.col
-      img(src="/images/badge_custom.png", ng-click="setFilter('', true)")
-
+    div.col-xs-2.col(ng-repeat="image in images")
+      img(src="{{image.url}}", ng-click="setFilter(image.filter)", ng-class="{'active': active == image.filter}")
 
   div.blocks(ng-class="{'none': !isLoaded}")
+    div.message(ng-show="active != 'latte'")
+      p 
+        i **hint: you can save your prefered cheats for latte by tapping on the title
     div.cheat(data-scroll-reveal="{{ cheat.scrollReveal }}"  ng-repeat="cheat in gitCheats | filter:filters" on-finish-render ng-click="mark(cheat)")
       h3 {{ cheat.title }}
       span.glyphicon.glyphicon-ok-sign(ng-show="cheat.checked")
