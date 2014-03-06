@@ -1,0 +1,14 @@
+{
+  "uid": "14229#1",
+  "recipient": {
+    "type": "email",
+    "hashed": false,
+    "identity": "rafinskipg@gmail.com"
+  },
+  "issuedOn": "2014-03-06T09:33:45.743Z",
+  "badge": "http://badgelab.herokuapp.com/14229/class.json",
+  "verify": {
+    "type": "hosted",
+    "url": "http://badgelab.herokuapp.com/14229/1.json"
+  }
+}

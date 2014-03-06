@@ -23,11 +23,13 @@
     "gulp-sass": "~0.6.0",
     "run-sequence": "~0.3.2",
     "gulp-jade": "~0.4.0",
-    "gulp-load-tasks": "~0.1.1"
+    "gulp-load-tasks": "~0.1.1",
+    "newrelic": "~1.3.2"
   },
   "devDependencies": {},
   "scripts": {
-    "start": "gulp"
+    "start": "gulp buildserver",
+    "postinstall": "echo postinstall time; ./node_modules/bower/bin/bower install; ./node_modules/gulp/bin/gulp.js build"
   },
   "engines": {
     "node": "0.10.x"

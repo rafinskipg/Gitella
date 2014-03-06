@@ -1,3 +1,5 @@
+require('newrelic');
+
 var gulp = require('gulp'),
     tasks = require("gulp-load-tasks")(),
     lr = require('tiny-lr'),
@@ -132,12 +134,23 @@ gulp.task("server", function(){
         .pipe(tasks.open("", options));
 });
 
+gulp.task('buildserver', function(){
+    var options = {
+        url: "http://gitella.herokuapp.com:80"
+    };
+    var app = connect()
+            .use(connect.static('dist'));
+
+    http.createServer(app).listen(80);
+});
+
 gulp.task("copy-dist", function(){
     gulp.src('./app/styles/fonts/**.**')
         .pipe(gulp.dest('./dist/styles/fonts/'));
     return gulp.src([
                 './build/**/**.html',
                 './app/index.html',
+                './app/favicon.png'
             ])
             .pipe(gulp.dest('./dist/'));
 
@@ -151,3 +164,4 @@ gulp.task('default', function(){
 gulp.task('build', function(){
   runSequence('clean', ['templates','browserify' ,'sass'], 'minify-js', 'minify-css', 'copy-dist');
 });
+
