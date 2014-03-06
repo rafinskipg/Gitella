@@ -24,7 +24,6 @@
     "tests"
   ],
   "devDependencies": {
-    "bootstrap-sass": "~3.0.2",
-    "scrollReveal.js": "~0.0.2"
+    "bootstrap-sass": "~3.0.2"
   }
 }

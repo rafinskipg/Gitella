@@ -28,7 +28,7 @@ gulp.task('browserify', function() {
           debug : true,
           shim: {
             'scrollReveal': {
-                path: 'app/bower_components/scrollReveal.js/scrollReveal.js',
+                path: 'app/scripts/vendor/scrollReveal.js',
                 exports: 'scrollReveal'
             },
             'angular': {
@@ -143,6 +143,15 @@ gulp.task('buildserver', function(){
 
     http.createServer(app).listen(80);
 });
+gulp.task('buildlocalserver', function(){
+    var options = {
+        url: "http://localhost:9292"
+    };
+    var app = connect()
+            .use(connect.static('dist'));
+
+    http.createServer(app).listen(9292);
+});
 
 gulp.task("copy-dist", function(){
     gulp.src('./app/styles/fonts/**.**')
@@ -150,7 +159,8 @@ gulp.task("copy-dist", function(){
     return gulp.src([
                 './build/**/**.html',
                 './app/index.html',
-                './app/favicon.png'
+                './app/favicon.png',
+                './app/**.pdf'
             ])
             .pipe(gulp.dest('./dist/'));
 
