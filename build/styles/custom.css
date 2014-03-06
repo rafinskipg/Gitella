@@ -4372,7 +4372,7 @@ th.hidden-lg, td.hidden-lg {
 
 @font-face {
   font-family: 'nutella';
-  src: url('fonts/nutellaBold.ttf') format('truetype'); }
+  src: url('/fonts/nutellaBold.ttf') format('truetype'); }
 
 html, body, h3, h1 {
   font-family: 'nutella'; }
@@ -4408,3 +4408,21 @@ pre {
 
 .cheats {
   margin-bottom: 20px; }
+  .cheats .cheat {
+    position: relative; }
+    .cheats .cheat h3 {
+      cursor: pointer; }
+    .cheats .cheat .glyphicon {
+      position: absolute;
+      right: 0;
+      top: 10px; }
+    .cheats .cheat:hover {
+      background: rgba(253, 0, 0, 0.21); }
+
+.badges {
+  margin-top: 20px; }
+  .badges .col {
+    text-align: center; }
+  .badges img {
+    height: 70px;
+    cursor: pointer; }

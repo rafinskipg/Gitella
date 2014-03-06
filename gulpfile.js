@@ -124,6 +124,7 @@ gulp.task("server", function(){
     var app = connect()
             .use(connect.logger('dev'))
             .use(connect.static('app'))
+            .use(connect.static('app/bower_components/bootstrap-sass'))
             .use(connect.static('build'));
 
     http.createServer(app).listen(8888);
@@ -135,7 +136,6 @@ gulp.task("server", function(){
 });
 
 gulp.task('buildserver', function(){
-
     var app = connect()
             .use(connect.static('dist'));
 
@@ -144,8 +144,13 @@ gulp.task('buildserver', function(){
 
 
 gulp.task("copy-dist", function(){
-    gulp.src('./app/styles/fonts/**.**')
-        .pipe(gulp.dest('./dist/styles/fonts/'));
+    gulp.src(['./app/fonts/**.**',
+                'app/bower_components/bootstrap-sass/fonts/**.**'])
+        .pipe(gulp.dest('./dist/fonts/'));
+    gulp.src('./app/data/**.**')
+        .pipe(gulp.dest('./dist/data/'));
+    gulp.src('./app/images/**.**')
+        .pipe(gulp.dest('./dist/images/'));
     return gulp.src([
                 './build/**/**.html',
                 './app/index.html',

@@ -1,7 +1,23 @@
 div(ng-controller="mainCtrl")
+  div.badges.row
+    div.col-xs-2.col
+      img(src="/images/badge_all.png", ng-click="setFilter('', false)")
+    div.col-xs-2.col
+      img(src="/images/badge_rookie.png", ng-click="setFilter('rookie', false)")
+    div.col-xs-2.col
+      img(src="/images/badge_initiate.png", ng-click="setFilter('initiate', false)")
+    div.col-xs-2.col
+      img(src="/images/badge_warrior.png", ng-click="setFilter('warrior', false)")
+    div.col-xs-2.col
+      img(src="/images/badge_veteran.png", ng-click="setFilter('veteran', false)")
+    div.col-xs-2.col
+      img(src="/images/badge_custom.png", ng-click="setFilter('', true)")
+
+
   div.blocks(ng-class="{'none': !isLoaded}")
-    div(data-scroll-reveal="{{ cheat.scrollReveal }}"  ng-repeat="cheat in gitCheats" on-finish-render )
+    div.cheat(data-scroll-reveal="{{ cheat.scrollReveal }}"  ng-repeat="cheat in gitCheats | filter:filters" on-finish-render ng-click="mark(cheat)")
       h3 {{ cheat.title }}
+      span.glyphicon.glyphicon-ok-sign(ng-show="cheat.checked")
       pre
         code
           p(ng-repeat="code in cheat.commands") {{ code }}

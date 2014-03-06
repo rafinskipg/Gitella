@@ -47,4 +47,29 @@ pre{
 
 .cheats{
   margin-bottom: 20px;
+  .cheat{
+    position: relative;
+    h3{
+      cursor: pointer;
+    }
+    .glyphicon{
+      position: absolute;
+      right: 0;
+      top: 10px;
+    }
+    &:hover{
+      background: rgba(253, 0, 0, 0.21);
+    }
+  }
+}
+
+.badges {
+  margin-top: 20px;  
+  .col{
+    text-align: center;
+  }
+  img{
+    height:70px;
+    cursor:pointer;
+  }
 }
