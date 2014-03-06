@@ -28,7 +28,7 @@
   },
   "devDependencies": {},
   "scripts": {
-    "start": "gulp buildserver",
+    "start": "./node_modules/gulp/bin/gulp.js buildserver",
     "postinstall": "echo postinstall time; ./node_modules/bower/bin/bower install; ./node_modules/gulp/bin/gulp.js build"
   },
   "engines": {
