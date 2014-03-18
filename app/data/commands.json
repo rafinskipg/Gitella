@@ -142,7 +142,7 @@
         "commands": [
             "git rm -r --cached .",
             "git add .",
-            "git commit -m \".gitignore working now\"",
+            "git commit -m \".gitignore working now\""
         ],
         "level": "warrior",
         "id": "w4"
@@ -194,6 +194,6 @@
         ],
         "level": "veteran",
         "id": "v5"
-    },
+    }
 
 ]
