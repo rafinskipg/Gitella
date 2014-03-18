@@ -137,6 +137,15 @@
         ],
         "level": "warrior",
         "id": "w3"
+    },{
+        "title": "Remove versions to apply a new git ignore",
+        "commands": [
+            "git rm -r --cached .",
+            "git add .",
+            "git commit -m \".gitignore working now\"",
+        ],
+        "level": "warrior",
+        "id": "w4"
     },
     {
         "title": "Make an interactive rebase to join, rewrite, reorder commits",
@@ -178,5 +187,13 @@
         ],
         "level": "veteran",
         "id": "v4"
-    }
+    },{
+        "title": "Create a \"git up\" alias for fastforward pull and clean branches that no longer exists on upstream ",
+        "commands": [
+            "git config --global alias.up '!git remote update -p; git merge --ff-only @{u}'"
+        ],
+        "level": "veteran",
+        "id": "v5"
+    },
+
 ]
