@@ -11,27 +11,27 @@ var controllers = angular.module('controllers',   [])
     };
     $scope.images = [
       {
-        url: '/images/badge_all_.png',
+        url: 'images/badge_all_.png',
         filter: ''
       },
       {
-        url: '/images/badge_rookie_.png',
+        url: 'images/badge_rookie_.png',
         filter: 'rookie'
       },
       {
-        url: '/images/badge_adept_.png',
+        url: 'images/badge_adept_.png',
         filter: 'adept'
       },
       {
-        url: '/images/badge_warrior_.png',
+        url: 'images/badge_warrior_.png',
         filter: 'warrior'
       },
       {
-        url: '/images/badge_veteran_.png',
+        url: 'images/badge_veteran_.png',
         filter: 'veteran'
       },
       {
-        url: '/images/badge_latte_.png',
+        url: 'images/badge_latte_.png',
         filter: 'latte'
       }
     ];

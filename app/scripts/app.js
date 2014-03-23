@@ -4,7 +4,11 @@ require('./controllers/mainCtrl');
 require('./services/services');
 require('./directives/postRender');
 
+document.addEventListener('deviceready', init, false);
 
+function init(){
+	console.log('init');
+}
 
 var myApp = angular.module('myApp',['controllers','directives', 'ngRoute', 'services']);
 
