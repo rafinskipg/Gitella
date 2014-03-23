@@ -152,6 +152,9 @@ gulp.task("copy-dist", function(){
         .pipe(gulp.dest('./'+destinationDirectory+'/data/'));
     gulp.src('./app/images/**.**')
         .pipe(gulp.dest('./'+destinationDirectory+'/images/'));
+    gulp.src('./app/res/**/**.**')
+        .pipe(gulp.dest('./'+destinationDirectory+'/res/'));
+
     return gulp.src([
                 './build/**/**.html',
                 './app/index.html',

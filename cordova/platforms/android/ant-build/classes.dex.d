@@ -1,4 +1,5 @@
 /home/rafa/projects/Gitella/cordova/platforms/android/ant-build/classes.dex : \
+/home/rafa/projects/Gitella/cordova/platforms/android/ant-build/classes/org/apache/cordova/splashscreen/SplashScreen.class \
 /home/rafa/projects/Gitella/cordova/platforms/android/ant-build/classes/org/apache/cordova/device/Device.class \
 /home/rafa/projects/Gitella/cordova/platforms/android/ant-build/classes/com/rafinskipg/gitella/R.class \
 /home/rafa/projects/Gitella/cordova/platforms/android/ant-build/classes/com/rafinskipg/gitella/R$attr.class \

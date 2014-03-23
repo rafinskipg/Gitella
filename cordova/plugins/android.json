@@ -6,7 +6,8 @@
     "config_munge": {
         "res/xml/config.xml": {
             "/*": {
-                "<feature name=\"Device\"><param name=\"android-package\" value=\"org.apache.cordova.device.Device\" /></feature>": 1
+                "<feature name=\"Device\"><param name=\"android-package\" value=\"org.apache.cordova.device.Device\" /></feature>": 1,
+                "<feature name=\"SplashScreen\"><param name=\"android-package\" value=\"org.apache.cordova.splashscreen.SplashScreen\" /></feature>": 1
             }
         }
     },
@@ -15,6 +16,9 @@
             "PACKAGE_NAME": "com.rafinskipg.gitella"
         },
         "org.apache.cordova.device": {
+            "PACKAGE_NAME": "com.rafinskipg.gitella"
+        },
+        "org.apache.cordova.splashscreen": {
             "PACKAGE_NAME": "com.rafinskipg.gitella"
         }
     },
