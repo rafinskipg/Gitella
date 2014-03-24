@@ -9,6 +9,7 @@ var gulp = require('gulp'),
     runSequence = require('run-sequence'),
     jade = require('gulp-jade');
 
+var destinationDirectory = 'dist';
 
 gulp.task('lint', function() {
   return gulp.src('./app/scripts/app.js')
@@ -17,7 +18,7 @@ gulp.task('lint', function() {
 });
 
 gulp.task('clean', function() {
-   return gulp.src(['./build/', './dist/'], {read: false})
+   return gulp.src(['./build/', './'+destinationDirectory+'/'], {read: false})
         .pipe(tasks.clean());
 });
 
@@ -84,19 +85,19 @@ gulp.task('sass', function(){
 gulp.task('minify-css', function() {
   gulp.src('./build/styles/**/**.css')
     .pipe(tasks['minify-css'](opts))
-    .pipe(gulp.dest('./dist/styles'))
+    .pipe(gulp.dest('./'+destinationDirectory+'/styles'))
 });
 
 gulp.task('minify-html', function() {
   gulp.src('./build/views/*.html')
     .pipe(tasks['minify-html'](opts))
-    .pipe(gulp.dest('./dist/views'))
+    .pipe(gulp.dest('./'+destinationDirectory+'/views'))
 });
 
 gulp.task('imagemin', function () {
     gulp.src('app/images/**.{png,svg,jpeg,gif,jpg}')
         .pipe(tasks.imagemin())
-        .pipe(gulp.dest('dist'));
+        .pipe(gulp.dest(destinationDirectory));
 });
 
 //TODO add support for source maps
@@ -106,7 +107,7 @@ gulp.task('minify-js', function() {
             // inSourceMap: 
             // outSourceMap: "app.js.map"
     }))
-    .pipe(gulp.dest('./dist/scripts'))
+    .pipe(gulp.dest('./'+destinationDirectory+'/scripts'))
 });
 
 gulp.task('watch', function() {
@@ -146,18 +147,21 @@ gulp.task('buildserver', function(){
 gulp.task("copy-dist", function(){
     gulp.src(['./app/fonts/**.**',
                 'app/bower_components/bootstrap-sass/fonts/**.**'])
-        .pipe(gulp.dest('./dist/fonts/'));
+        .pipe(gulp.dest('./'+destinationDirectory+'/fonts/'));
     gulp.src('./app/data/**.**')
-        .pipe(gulp.dest('./dist/data/'));
+        .pipe(gulp.dest('./'+destinationDirectory+'/data/'));
     gulp.src('./app/images/**.**')
-        .pipe(gulp.dest('./dist/images/'));
+        .pipe(gulp.dest('./'+destinationDirectory+'/images/'));
+    gulp.src('./app/res/**/**.**')
+        .pipe(gulp.dest('./'+destinationDirectory+'/res/'));
+
     return gulp.src([
                 './build/**/**.html',
                 './app/index.html',
                 './app/favicon.png',
                 './app/**.pdf'
             ])
-            .pipe(gulp.dest('./dist/'));
+            .pipe(gulp.dest('./'+destinationDirectory+'/'));
 
 });
 
@@ -167,6 +171,12 @@ gulp.task('default', function(){
 });
 
 gulp.task('build', function(){
+  destinationDirectory = 'dist';
+  runSequence('clean', ['templates','browserify' ,'sass'], 'minify-js', 'minify-css', 'copy-dist');
+});
+
+gulp.task('phone', function(){
+  destinationDirectory = 'cordova/www';
   runSequence('clean', ['templates','browserify' ,'sass'], 'minify-js', 'minify-css', 'copy-dist');
 });
 

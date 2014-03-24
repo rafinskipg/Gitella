@@ -4,3 +4,4 @@ npm-debug.log
 newrelic_agent.log
 dist
 build
+cordova/wwww
