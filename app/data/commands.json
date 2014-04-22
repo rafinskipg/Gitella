@@ -146,6 +146,14 @@
         ],
         "level": "warrior",
         "id": "w4"
+    },{
+        "title": "Discard all local changes and get all the code from remote",
+        "commands": [
+            "git fetch --all",
+            "git reset --hard origin/master"
+        ],
+        "level": "warrior",
+        "id": "w5"
     },
     {
         "title": "Make an interactive rebase to join, rewrite, reorder commits",

@@ -21,7 +21,6 @@ var services = angular.module('services', [])
       }
       deferred.resolve({ commands: response.data, hasLocalStorage: locals.length > 0});
     }).catch(deferred.reject);
-      
 
     return deferred.promise;
   };
